@@ -11,7 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502012233) do
+ActiveRecord::Schema.define(version: 20150502012423) do
+
+  create_table "accounts", force: :cascade do |t|
+    t.string   "name"
+    t.string   "picture"
+    t.date     "dob"
+    t.string   "gender"
+    t.integer  "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "accounts", ["user_id"], name: "index_accounts_on_user_id"
+
+  create_table "enquiries", force: :cascade do |t|
+    t.string   "name"
+    t.string   "email"
+    t.string   "phone"
+    t.text     "message"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "friendly_id_slugs", force: :cascade do |t|
     t.string   "slug",                      null: false
@@ -26,6 +47,36 @@ ActiveRecord::Schema.define(version: 20150502012233) do
   add_index "friendly_id_slugs", ["sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_id"
   add_index "friendly_id_slugs", ["sluggable_type"], name: "index_friendly_id_slugs_on_sluggable_type"
 
+  create_table "location_users", force: :cascade do |t|
+    t.integer  "location_id"
+    t.integer  "user_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "location_users", ["location_id"], name: "index_location_users_on_location_id"
+  add_index "location_users", ["user_id"], name: "index_location_users_on_user_id"
+
+  create_table "locations", force: :cascade do |t|
+    t.string   "country"
+    t.string   "city"
+    t.string   "region"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "plans", force: :cascade do |t|
+    t.string   "name"
+    t.boolean  "completed"
+    t.integer  "user_id"
+    t.integer  "tip_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "plans", ["tip_id"], name: "index_plans_on_tip_id"
+  add_index "plans", ["user_id"], name: "index_plans_on_user_id"
+
   create_table "roles", force: :cascade do |t|
     t.string   "name"
     t.integer  "resource_id"
@@ -36,6 +87,26 @@ ActiveRecord::Schema.define(version: 20150502012233) do
 
   add_index "roles", ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
   add_index "roles", ["name"], name: "index_roles_on_name"
+
+  create_table "tips", force: :cascade do |t|
+    t.string   "name"
+    t.string   "tip_type"
+    t.text     "description"
+    t.string   "price"
+    t.string   "initally_recommended_by"
+    t.string   "best_for"
+    t.string   "address"
+    t.string   "suburb"
+    t.string   "postcode"
+    t.string   "website"
+    t.integer  "user_id"
+    t.integer  "location_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+  end
+
+  add_index "tips", ["location_id"], name: "index_tips_on_location_id"
+  add_index "tips", ["user_id"], name: "index_tips_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

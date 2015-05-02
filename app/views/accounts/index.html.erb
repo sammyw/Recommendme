@@ -1,0 +1,28 @@
+<h1>Listing accounts</h1>
+
+<table class="table">
+    <tr>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+        <th colspan="3"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @accounts) do |account| %>
+    <td><%= account.name %></td>
+    <td><%= account.picture %></td>
+    <td><%= account.dob %></td>
+    <td><%= account.gender %></td>
+    <td><%= account.user %></td>
+      <td><%= link_to 'Show', account %></td>
+    <td><%= link_to 'Edit', edit_account_path(account), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', account, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to 'New Account', new_account_path, class: 'btn btn-success' %>
+</div>

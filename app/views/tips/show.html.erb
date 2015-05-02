@@ -1,0 +1,64 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @tip.name %>
+</p>
+
+<p>
+  <strong>Tip type:</strong>
+  <%= @tip.tip_type %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @tip.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @tip.price %>
+</p>
+
+<p>
+  <strong>Initally recommended by:</strong>
+  <%= @tip.initally_recommended_by %>
+</p>
+
+<p>
+  <strong>Best for:</strong>
+  <%= @tip.best_for %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @tip.address %>
+</p>
+
+<p>
+  <strong>Suburb:</strong>
+  <%= @tip.suburb %>
+</p>
+
+<p>
+  <strong>Postcode:</strong>
+  <%= @tip.postcode %>
+</p>
+
+<p>
+  <strong>Website:</strong>
+  <%= @tip.website %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @tip.user %>
+</p>
+
+<p>
+  <strong>Location:</strong>
+  <%= @tip.location %>
+</p>
+
+<%= link_to 'Edit', edit_tip_path(@tip) %> |
+<%= link_to 'Back', tips_path %>

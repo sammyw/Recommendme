@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :plans
+  resources :tips
+  resources :enquiries
+  resources :accounts
+  resources :locations
   get 'admin', to: 'pages#admin'
   get 'contact', to: 'pages#contact'
   root 'pages#home'

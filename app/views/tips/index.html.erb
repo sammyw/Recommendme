@@ -1,0 +1,42 @@
+<h1>Listing tips</h1>
+
+<table class="table">
+    <tr>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+        <th colspan="3"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @tips) do |tip| %>
+    <td><%= tip.name %></td>
+    <td><%= tip.tip_type %></td>
+    <td><%= tip.description %></td>
+    <td><%= tip.price %></td>
+    <td><%= tip.initally_recommended_by %></td>
+    <td><%= tip.best_for %></td>
+    <td><%= tip.address %></td>
+    <td><%= tip.suburb %></td>
+    <td><%= tip.postcode %></td>
+    <td><%= tip.website %></td>
+    <td><%= tip.user %></td>
+    <td><%= tip.location %></td>
+      <td><%= link_to 'Show', tip %></td>
+    <td><%= link_to 'Edit', edit_tip_path(tip), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', tip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to 'New Tip', new_tip_path, class: 'btn btn-success' %>
+</div>

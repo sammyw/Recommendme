@@ -1,0 +1,26 @@
+<h1>Listing plans</h1>
+
+<table class="table">
+    <tr>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+      <th><%= attribute.name.capitalize %></th>
+        <th colspan="3"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @plans) do |plan| %>
+    <td><%= plan.name %></td>
+    <td><%= plan.completed %></td>
+    <td><%= plan.user %></td>
+    <td><%= plan.tip %></td>
+      <td><%= link_to 'Show', plan %></td>
+    <td><%= link_to 'Edit', edit_plan_path(plan), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', plan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+
+<div class="form-actions">
+  <%= link_to 'New Plan', new_plan_path, class: 'btn btn-success' %>
+</div>

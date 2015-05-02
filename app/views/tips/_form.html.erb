@@ -1,0 +1,22 @@
+<%= simple_form_for(@tip) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :name %>
+    <%= f.input :tip_type %>
+    <%= f.input :description %>
+    <%= f.input :price %>
+    <%= f.input :initally_recommended_by %>
+    <%= f.input :best_for %>
+    <%= f.input :address %>
+    <%= f.input :suburb %>
+    <%= f.input :postcode %>
+    <%= f.input :website %>
+    <%= f.association :user %>
+    <%= f.association :location %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
