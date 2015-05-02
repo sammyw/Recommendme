@@ -1,4 +1,6 @@
 class PagesController < ApplicationController
+  skip_before_action :authenticate_user!, except: [:admin]
+
   def home
   end
 
@@ -7,4 +9,5 @@ class PagesController < ApplicationController
 
   def contact
   end
+
 end
