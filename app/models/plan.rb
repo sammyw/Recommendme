@@ -1,4 +1,5 @@
 class Plan < ActiveRecord::Base
   belongs_to :user
-  belongs_to :tip
+  has_many :plan_tips
+  has_many :tips, through: :plan_tips
 end
