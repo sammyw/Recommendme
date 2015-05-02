@@ -6,12 +6,15 @@ Rails.application.routes.draw do
   resources :locations
   get 'admin', to: 'pages#admin'
   get 'contact', to: 'pages#contact'
+  get 'about', to: 'pages#about'
   root 'pages#home'
   get 'pages/home'
 
   get 'pages/admin'
 
   get 'pages/contact'
+  
+  get 'pages/about'
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
