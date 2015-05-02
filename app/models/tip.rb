@@ -3,4 +3,5 @@ class Tip < ActiveRecord::Base
   belongs_to :location
   has_many :plan_tips
   has_many :plans, through: :plan_tips
+  validates :tip_type, :name, presence: true
 end
