@@ -3,11 +3,11 @@
 
   <div class="form-inputs">
     <%= f.input :name %>
-    <%= f.input :tip_type %>
+    <%= f.input :tip_type, collection: ['Accommodation', 'Restaurant', 'Bar', 'Nightclub', 'Sight', 'Daytrip', 'Shop', 'Activity', 'Nature eg beach, lake, rainforest' 'Other']  %>
     <%= f.input :description %>
-    <%= f.input :price %>
+    <%= f.input :price, collection: ['$', '$$', '$$$', '$$$$']%>
     <%= f.input :initally_recommended_by %>
-    <%= f.input :best_for %>
+    <%= f.input :best_for, collection: ['Group holiday', 'Romantic getaway', 'Young traveller', 'Older traveller', 'LGBT', 'Backpacker']  %>
     <%= f.input :address %>
     <%= f.input :suburb %>
     <%= f.input :postcode %>
