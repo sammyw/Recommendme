@@ -26,6 +26,7 @@ class TipsController < ApplicationController
   def create
     @tip = Tip.new(tip_params)
     @tip.user = current_user
+    @tip.location = Location.find_location(@tip.country, @tip.city, @tip.region)
     respond_to do |format|
       if @tip.save
         format.html { redirect_to @tip, notice: 'Tip was successfully created.' }
@@ -69,6 +70,6 @@ class TipsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tip_params
-      params.require(:tip).permit(:country, :city, :region, :name, :tip_type, :description, :price, :initally_recommended_by, :best_for, :address, :suburb, :postcode, :website, :user_id, :location_id)
+      params.require(:tip).permit(:country, :city, :region, :name, :tip_type, :description, :price, :initally_recommended_by, :best_for, :address, :suburb, :state, :postcode, :website, :user_id, :location_id)
     end
 end

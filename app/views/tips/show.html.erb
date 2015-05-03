@@ -57,7 +57,7 @@
 
 <p>
   <strong>Location:</strong>
-  <%= @tip.location %>
+  <%= @tip.city + ', ' + ISO3166::Country[@tip.location.country].to_s %>
 </p>
 
 <%= link_to 'Edit', edit_tip_path(@tip) %> |

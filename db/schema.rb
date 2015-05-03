@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150502025630) do
+ActiveRecord::Schema.define(version: 20150502053507) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -112,6 +112,10 @@ ActiveRecord::Schema.define(version: 20150502025630) do
     t.integer  "location_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+    t.string   "country"
+    t.string   "city"
+    t.string   "region"
+    t.string   "state"
   end
 
   add_index "tips", ["location_id"], name: "index_tips_on_location_id"

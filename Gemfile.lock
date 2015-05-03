@@ -102,6 +102,7 @@ GEM
     i18n_data (0.6.3)
     invisible_captcha (0.8.0)
       rails
+    iso_country_codes (0.6.1)
     jbuilder (2.2.13)
       activesupport (>= 3.0.0, < 5)
       multi_json (~> 1.2)
@@ -254,6 +255,7 @@ DEPENDENCIES
   devise
   friendly_id
   invisible_captcha
+  iso_country_codes
   jbuilder (~> 2.0)
   jquery-rails
   newrelic_rpm
