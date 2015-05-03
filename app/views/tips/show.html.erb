@@ -51,11 +51,6 @@
 </p>
 
 <p>
-  <strong>User:</strong>
-  <%= @tip.user %>
-</p>
-
-<p>
   <strong>Location:</strong>
   <%= @tip.city + ', ' + ISO3166::Country[@tip.location.country].to_s %>
 </p>

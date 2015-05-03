@@ -4,10 +4,11 @@
   <%= @account.name %>'s Profile
 </h1>
 
-  <img class="img-circle" src="<%= @account.picture %>" width="140" alt="">
+<p><img class="img-circle" src="<%= @account.picture %>" width="140" alt=""></p>
 
 <h3><%= @account.name %>'s Tips</h3>
 <p><%= link_to 'Add tip', new_tip_path %></p>
+<p><%= link_to 'Add planner', new_plan_path %></p>
 
 <% @locations.each do |location| %>
 <div class="panel panel-default">
@@ -23,21 +24,19 @@
       <th>Location</th>
       <th colspan="3"></th>
     </tr>
-
-  <%= content_tag_for(:tr, @tips) do |tip| %>
-    <td><%= location.tip.tip_type %></td>
-    <td><%= location.tip.name %></td>
-    <td><%= location.tip.description %></td>
-    <td><%= location.tip.price %></td>
-    <td><%= location.tip.website %></td>
-    <td><%= location.tip.location %></td>
-    <td><%= link_to 'Show', tip %></td>
-    <td><%= link_to 'Edit', edit_tip_path(tip), class: 'btn btn-edit' %></td>
-    <td><%= link_to 'Delete', tip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
-  <% end %>
-</table>
+    <tr>
+      <td><%= location.tip.tip_type %></td>
+      <td><%= location.tip.name %></td>
+      <td><%= location.tip.description %></td>
+      <td><%= location.tip.price %></td>
+      <td><%= location.tip.website %></td>
+      <td><%= location.tip.location %></td>
+      <td><%= link_to 'Show', tip %></td>
+      <td><%= link_to 'Edit', edit_tip_path(tip), class: 'btn btn-edit' %></td>
+      <td><%= link_to 'Delete', tip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+    </tr> 
+    </table>
   </div>
-</div>
 </div>
 
 <% end %>
