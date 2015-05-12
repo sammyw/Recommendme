@@ -11,9 +11,9 @@
 <p><%= link_to 'Add planner', new_plan_path %></p>
 
 <% @locations.each do |location| %>
-<div class="panel panel-default">
-  <div class="panel-heading"><%= location.city_region %>, <%= location.country %> <%= link_to 'Add tip', new_tip_path(location: location.id) %></div>
-  <div class="panel-body">
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= location.city %>, <%= location.country %> <%= link_to 'Add tip', new_tip_path(location: location.id) %></div>
+    <div class="panel-body">
     <table class="table">
     <tr>
       <th>Type</th>
@@ -21,24 +21,24 @@
       <th>Description</th>
       <th>Price</th>
       <th>Website</th>
-      <th>Location</th>
       <th colspan="3"></th>
     </tr>
-    <tr>
-      <td><%= location.tip.tip_type %></td>
-      <td><%= location.tip.name %></td>
-      <td><%= location.tip.description %></td>
-      <td><%= location.tip.price %></td>
-      <td><%= location.tip.website %></td>
-      <td><%= location.tip.location %></td>
-      <td><%= link_to 'Show', tip %></td>
-      <td><%= link_to 'Edit', edit_tip_path(tip), class: 'btn btn-edit' %></td>
-      <td><%= link_to 'Delete', tip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
-    </tr> 
-    </table>
-  </div>
-</div>
 
+    <% location.tips.each do |tip| %>
+      <tr>
+        <td><%= tip.tip_type %></td>
+        <td><%= tip.name %></td>
+        <td><%= tip.description %></td>
+        <td><%= tip.price %></td>
+        <td><%= tip.website %></td>
+        <td><%= link_to 'Show', tip %></td>
+        <td><%= link_to 'Edit', edit_tip_path(tip), class: 'btn btn-edit' %></td>
+        <td><%= link_to 'Delete', tip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+      </tr>
+    <% end %> 
+    </table>
+    </div>
+  </div>
 <% end %>
 
 

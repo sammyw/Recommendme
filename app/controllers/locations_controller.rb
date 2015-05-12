@@ -25,6 +25,8 @@ class LocationsController < ApplicationController
   # POST /locations.json
   def create
     @location = Location.new(location_params)
+    @location = Location.find_location(@location.country, @location.city, @location.region)
+    @location.users << current_user
 
     respond_to do |format|
       if @location.save
@@ -69,6 +71,6 @@ class LocationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def location_params
-      params.require(:location).permit(:country, :city, :region)
+      params.require(:location).permit(:country, :city, :region, :user)
     end
 end
