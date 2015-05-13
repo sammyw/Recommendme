@@ -32,8 +32,8 @@
         <td><%= tip.price %></td>
         <td><%= tip.website %></td>
         <td><%= link_to 'Show', tip %></td>
-        <td><%= link_to 'Edit', edit_tip_path(tip), class: 'btn btn-edit' %></td>
-        <td><%= link_to 'Delete', tip, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+        <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_tip_path(tip) %></td>
+        <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, tip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %> 
     </table>
