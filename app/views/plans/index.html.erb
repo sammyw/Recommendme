@@ -1,14 +1,61 @@
-<h1>Listing plans</h1>
+<h1>My Planners</h1>
 
+<h2>Current Planners</h2>
 <table class="table">
     <tr>
       <th>Name</th>
+      <th>Start Date</th>
+      <th>End date</th>
       <th>Complete</th>
         <th colspan="3"></th>
     </tr>
 
-  <%= content_tag_for(:tr, @plans) do |plan| %>
-    <td><%= plan.name %></td>
+  <%= content_tag_for(:tr, @plans.current) do |plan| %>
+    <td><%= link_to plan.name, plan %></td>
+    <td><%= plan.start_date %></td>
+    <td><%= plan.end_date %></td>
+    <td><%= plan.completed %></td>
+      <td><%= link_to 'Show', plan %></td>
+    <td><%= link_to 'Edit', edit_plan_path(plan), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', plan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+<h2>Future Planners</h2>
+<table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Start Date</th>
+      <th>End date</th>
+      <th>Complete</th>
+        <th colspan="3"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @plans.future) do |plan| %>
+    <td><%= link_to plan.name, plan %></td>
+    <td><%= plan.start_date %></td>
+    <td><%= plan.end_date %></td>
+    <td><%= plan.completed %></td>
+      <td><%= link_to 'Show', plan %></td>
+    <td><%= link_to 'Edit', edit_plan_path(plan), class: 'btn btn-edit' %></td>
+    <td><%= link_to 'Delete', plan, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-destroy' %></td>
+  <% end %>
+</table>
+
+<h2>Past Planners</h2>
+<table class="table">
+    <tr>
+      <th>Name</th>
+      <th>Start Date</th>
+      <th>End date</th>
+      <th>Complete</th>
+        <th colspan="3"></th>
+    </tr>
+
+  <%= content_tag_for(:tr, @plans.past) do |plan| %>
+    <td><%= link_to plan.name, plan %></td>
+    <td><%= plan.start_date %></td>
+    <td><%= plan.end_date %></td>
     <td><%= plan.completed %></td>
       <td><%= link_to 'Show', plan %></td>
     <td><%= link_to 'Edit', edit_plan_path(plan), class: 'btn btn-edit' %></td>
