@@ -12,8 +12,8 @@
 
     <%= content_tag_for(:tr, @plans.current) do |plan| %>
       <td><%= link_to plan.name, plan %></td>
-      <td><%= plan.start_date %></td>
-      <td><%= plan.end_date %></td>
+      <td><%= plan.start_date.strftime("%-d %b %y") %></td>
+      <td><%= plan.end_date.strftime("%-d %b %y") %></td>
       <td><%= plan.completed %></td>
       <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_plan_path(plan)%></td>
       <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -32,8 +32,8 @@
 
     <%= content_tag_for(:tr, @plans.future) do |plan| %>
       <td><%= link_to plan.name, plan %></td>
-      <td><%= plan.start_date %></td>
-      <td><%= plan.end_date %></td>
+      <td><%= plan.start_date.strftime("%-d %b %y") %></td>
+      <td><%= plan.end_date.strftime("%-d %b %y") %></td>
       <td><%= plan.completed %></td>
       <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_plan_path(plan) %></td>
       <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -52,8 +52,8 @@
 
     <%= content_tag_for(:tr, @plans.past) do |plan| %>
       <td><%= link_to plan.name, plan %></td>
-      <td><%= plan.start_date %></td>
-      <td><%= plan.end_date %></td>
+      <td><%= plan.start_date.strftime("%-d %b %y") %></td>
+      <td><%= plan.end_date.strftime("%-d %b %y") %></td>
       <td><%= plan.completed %></td>
       <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_plan_path(plan) %></td>
       <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, plan, method: :delete, data: { confirm: 'Are you sure?' } %></td>

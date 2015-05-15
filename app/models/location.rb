@@ -12,5 +12,5 @@ class Location < ActiveRecord::Base
 			create(city: city, country: country)
 		end
 	end
-		 
+
 end

@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :accounts
   resources :locations
   get 'admin', to: 'pages#admin'
-  get 'contact', to: 'pages#contact'
+  get 'contact', to: 'enquiries#new'
   get 'about', to: 'pages#about'
   root 'pages#home'
   get 'pages/home'

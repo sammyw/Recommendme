@@ -6,9 +6,9 @@
     <%= f.input :city %>
     <%= f.input :region %>
     <%= f.input :name %>
-    <%= f.input :tip_type, collection: ['Accommodation', 'Restaurant', 'Bar', 'Nightclub', 'Sight', 'Daytrip', 'Shop', 'Activity', 'Nature eg beach, lake, rainforest', 'Other']  %>
+    <%= f.input :tip_type, collection: ['Accommodation', 'Restaurant', 'Bar', 'Nightclub', 'Sight', 'Daytrip', 'Shop', 'Activity', 'Outdoor', 'Other']  %>
     <%= f.input :description %>
-    <%= f.input :price, collection: ['$', '$$', '$$$', '$$$$']%>
+    <%= f.input :price, collection: ['Free', '$', '$$', '$$$', '$$$$']%>
     <%= f.input :initally_recommended_by %>
     <%= f.input :best_for, collection: ['Group holiday', 'Romantic getaway', 'Young traveller', 'Older traveller', 'LGBT', 'Backpacker']  %>
     <%= f.input :address %>
