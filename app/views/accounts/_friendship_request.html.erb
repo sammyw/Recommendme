@@ -1,0 +1,4 @@
+<span class="label label-default">Waiting for approval</span>
+<%= form_for(current_user.relationships.find_by(friendee_id:@account.user.id), html: { method: :delete }, remote: true) do |f| %>
+	<%= f.submit "Cancel friend request", class: "btn btn-sm btn-default" %>
+<% end %>

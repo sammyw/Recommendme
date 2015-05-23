@@ -6,7 +6,6 @@
     <%= f.input :picture %>
     <%= f.input :dob, {:start_year => 1920, :end_year => Time.now.year} %>
     <%= f.input :gender, collection: ['Male', 'Female'] %>
-    <%= f.association :user %>
   </div>
 
   <div class="form-actions">

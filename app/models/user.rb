@@ -3,6 +3,10 @@ class User < ActiveRecord::Base
 	has_many :plans
 	has_many :location_users
 	has_many :locations, through: :location_users
+
+	has_many :relationships, foreign_key: "friender_id", dependent: :destroy
+	has_many :friendes, through: :relationships
+
   rolify
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -16,6 +20,22 @@ class User < ActiveRecord::Base
 	    user.save
 	    user.account = Account.create(name: auth.info.name, picture: auth.info.image)
 	  end
+	end
+
+	def friendee?(other_user)
+		relationships.find_by(friender_id: other_user.id)
+	end
+
+	def friender?(other_user)
+		relationships.find_by(friendee_id: other_user.id)
+	end
+
+	def request_friendship!(other_user)
+		relationships.create!(friendee_id: other_user.id)
+	end
+
+	def cancel_friendship!(other_user)
+		relationships.find_by(friendee_id: other_user.id).delete
 	end
 
 end

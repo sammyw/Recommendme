@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150512113136) do
+ActiveRecord::Schema.define(version: 20150516001748) do
 
   create_table "accounts", force: :cascade do |t|
     t.string   "name"
@@ -87,6 +87,18 @@ ActiveRecord::Schema.define(version: 20150512113136) do
   end
 
   add_index "plans", ["user_id"], name: "index_plans_on_user_id"
+
+  create_table "relationships", force: :cascade do |t|
+    t.integer  "friender_id"
+    t.integer  "friendee_id"
+    t.boolean  "approved"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  add_index "relationships", ["friendee_id"], name: "index_relationships_on_friendee_id"
+  add_index "relationships", ["friender_id", "friendee_id"], name: "index_relationships_on_friender_id_and_friendee_id", unique: true
+  add_index "relationships", ["friender_id"], name: "index_relationships_on_friender_id"
 
   create_table "roles", force: :cascade do |t|
     t.string   "name"

@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  resources :relationships, only: [:create, :destroy] do
+    member do
+      post 'accept'
+    end
+  end
+  #post 'accept_relationship/:relationship', to: 'relationships#accept'
   resources :plans
   resources :tips
   resources :enquiries

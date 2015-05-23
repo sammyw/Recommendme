@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -58,12 +58,15 @@ gem 'whenever', require: false
 gem 'sucker_punch', '~> 1.0'
 gem 'newrelic_rpm'
 gem 'iso_country_codes'
+gem "koala", "~> 2.0"
 group :development do
   gem 'better_errors'
   gem 'quiet_assets'
+  gem 'sqlite3'
 end
 
 group :production do
   gem 'rails_12factor'
   gem 'passenger'
+  gem 'pg'
 end

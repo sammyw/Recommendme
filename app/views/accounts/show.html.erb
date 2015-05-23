@@ -2,6 +2,29 @@
 
 <img class="img-circle" src="<%= @account.picture %>" width="160" alt="" />
 
+<div class="friend_unfriend" >
+  <% unless current_user == @account.user %>
+    <div id="friend_form" >
+    <% if @relationship = Relationship.find_by(friender_id: @account.user.id, friendee_id: current_user.id) %>
+      <% if @relationship.approved %>
+        <%= render 'unfriend' %>
+      <% else %>  
+        <%= render 'accept_friendship' %>
+        <
+      <% end %>
+    <% elsif @relationship = Relationship.find_by(friendee_id: @account.user.id, friender_id: current_user.id) %>
+        <% if @relationship.approved %>
+          <%= render 'unfriend' %>
+        <% else %>  
+          <%= render 'friendship_request' %>
+        <% end %>
+    <% else %>
+      <%= render 'add_friend' %>
+    <% end %>
+    </div>
+  <% end %>
+</div>
+
 <h1><%= @account.name %>'s Tips</h1>
 <p><%= link_to 'Add tip', new_tip_path %></p>
 <p><%= link_to 'Add planner', new_plan_path %></p>
