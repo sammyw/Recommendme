@@ -9,8 +9,7 @@
       <% if @relationship.approved %>
         <%= render 'unfriend' %>
       <% else %>  
-        <%= render 'accept_friendship' %>
-        <
+        <%= render 'accept_reject_friendship' %>
       <% end %>
     <% elsif @relationship = Relationship.find_by(friendee_id: @account.user.id, friender_id: current_user.id) %>
         <% if @relationship.approved %>
@@ -40,9 +39,9 @@
       <th>Description</th>
       <th>Price</th>
       <th>Website</th>
-      <th colspan="3"></th>
+      <th colspan="9"></th>
     </tr>
-
+    
     <% location.tips.each do |tip| %>
       <tr>
         <td><%= tip.tip_type %></td>
@@ -53,6 +52,22 @@
         <td><%= link_to 'Show', tip %></td>
         <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_tip_path(tip) %></td>
         <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, tip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% unless current_user == @account.user %>
+          <td>
+           <div class="btn-group">
+            <button type="button" class="btn btn-info dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              Add to planner <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" role="menu">
+              <% current_user.plans.each do |plan| %>
+                <% unless plan.tips.include?(tip) %>
+                  <li><%= link_to plan.name, add_to_plan_tip_path(tip: tip.id, plan: plan.id) %>
+                <% end %>
+              <% end %>
+            </ul>
+            </div> 
+          </td>
+        <% end %>
       </tr>
     <% end %> 
     </table>

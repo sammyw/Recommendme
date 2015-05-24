@@ -11,6 +11,7 @@ class AccountsController < ApplicationController
   # GET /accounts/1.json
   def show
     @locations = @account.user.locations
+    @user = @account.user
   end
 
   # GET /accounts/new

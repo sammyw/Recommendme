@@ -1,2 +1,10 @@
-<%= button_to 'Accept', accept_relationship_path(rel: @relationship), method: :post, class: 'btn btn-success btn-sm' %>
-<%= button_to 'Accept', delete_relationship_path(rel: @relationship), method: :post, class: 'btn btn-success btn-sm' %>
+<table class="table">
+  <td><%= button_to 'Accept', accept_relationship_path(rel: @relationship), method: :post, class: 'btn btn-success btn-sm' %></td>
+  <%= form_for(Relationship.find(@relationship), html: { method: :delete }, remote: true) do |f| %>
+    <td><%= f.submit "Reject", class: "btn btn-sm btn-default" %></td>
+  <% end %>
+  <td colspan="9"></td>
+</table>
+
+
+

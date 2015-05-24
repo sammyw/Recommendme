@@ -1,6 +1,13 @@
 class TipsController < ApplicationController
   before_action :set_tip, only: [:show, :edit, :update, :destroy]
 
+  def add_to_plan
+    @tip = Tip.find(params[:tip])
+    @plan = Plan.find(params[:plan])
+    @plan.tips << @tip
+    redirect_to :back
+  end
+
   # GET /tips
   # GET /tips.json
   def index

@@ -2,11 +2,16 @@ Rails.application.routes.draw do
   resources :relationships, only: [:create, :destroy] do
     member do
       post 'accept'
+      delete 'reject'
     end
   end
   #post 'accept_relationship/:relationship', to: 'relationships#accept'
   resources :plans
-  resources :tips
+  resources :tips do
+    member do
+      get :add_to_plan
+    end
+  end
   resources :enquiries
   resources :accounts
   resources :locations

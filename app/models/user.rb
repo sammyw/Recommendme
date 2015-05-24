@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_one :account
 	has_many :plans
+	has_many :tips
 	has_many :location_users
 	has_many :locations, through: :location_users
 

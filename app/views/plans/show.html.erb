@@ -1,24 +1,35 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Name:</strong>
-  <%= @plan.name %>
-</p>
+  <div class="panel panel-default">
+    <div class="panel-heading"><%= @plan.name %></div>
+    <div class="panel-body">
+    <table class="table">
+    <tr>
+      <th>Type</th>
+      <th>Name</th>
+      <th>Description</th>
+      <th>Price</th>
+      <th>Website</th>
+      <th colspan="9"></th>
+    </tr>
 
-<p>
-  <strong>Start date:</strong>
-  <%= @plan.start_date %>
-</p>
-
-<p>
-  <strong>End date:</strong>
-  <%= @plan.end_date %>
-</p>
-
-<p>
-  <strong>Completed:</strong>
-  <%= @plan.completed %>
-</p>
+    <% @plan.tips.each do |tip| %>
+      <tr>
+        <td><%= tip.tip_type %></td>
+        <td><%= tip.name %></td>
+        <td><%= tip.description %></td>
+        <td><%= tip.price %></td>
+        <td><%= tip.website %></td>
+        <td><%= link_to 'Show', tip %></td>
+        <td><%= link_to '<i class="fa fa-edit fa-2x"></i>'.html_safe, edit_tip_path(tip) %></td>
+        <td><%= link_to '<i class="fa fa-trash fa-2x"></i>'.html_safe, tip, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td>
+        </td>
+      </tr>
+    <% end %> 
+    </table>
+    </div>
+  </div>
 
 
 <%= link_to 'Edit', edit_plan_path(@plan) %> |
