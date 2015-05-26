@@ -34,7 +34,13 @@ class TipsController < ApplicationController
     @tip = Tip.new(tip_params)
     @tip.user = current_user
     @tip.location = Location.find_location(@tip.country, @tip.city, @tip.region)
+
+    if @tip.location.users.include?(current_user)
+      redirect_to new_tip_path, alert: 'Location already exists for user' and return
+    end
+    
     @tip.location.users << current_user
+    
     respond_to do |format|
       if @tip.save
         format.html { redirect_to @tip, notice: 'Tip was successfully created.' }

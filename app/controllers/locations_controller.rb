@@ -27,6 +27,11 @@ class LocationsController < ApplicationController
   def create
     @location = Location.new(location_params)
     @location = Location.find_location(@location.country, @location.city, @location.region)
+    
+    if @location.users.include?(current_user)
+      redirect_to new_location_path, alert: 'Location already exists for user' and return
+    end
+    
     @location.users << current_user
 
     respond_to do |format|
